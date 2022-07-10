@@ -98,9 +98,6 @@
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "description": "Bad request."
                     }
                 }
             }
@@ -231,9 +228,6 @@
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "description": "Bad request."
                     }
                 }
             }
@@ -565,7 +559,8 @@
                         "description": "Жанры",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/Genre"
+                            "title": "genre.id",
+                            "type": "int"
                         },
                         "example": [
                             1,

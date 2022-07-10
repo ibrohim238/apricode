@@ -30,7 +30,7 @@ class GameRequest
         title: 'genres',
         description: 'Жанры',
         type: 'array',
-        items: new OA\Items(ref: '#/components/schemas/Genre'),
+        items: new OA\Items(title: 'genre.id', type: 'int'),
         example: [1,2,3],
     )]
     public array $genres;

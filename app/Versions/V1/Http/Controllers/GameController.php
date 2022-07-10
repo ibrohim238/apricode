@@ -99,7 +99,6 @@ class GameController extends Controller
         content: new OA\JsonContent(ref: "#/components/schemas/Game")
     )]
     #[UnprocessableEntityResponse]
-    #[BadRequestResponse]
     public function store(GameRequest $request): GameResource
     {
         $game = app(GameService::class)
@@ -134,7 +133,6 @@ class GameController extends Controller
     )]
     #[NotFoundResponse]
     #[UnprocessableEntityResponse]
-    #[BadRequestResponse]
     public function update(Game $game, GameRequest $request): GameResource
     {
         app(GameService::class, [
