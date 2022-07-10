@@ -6,7 +6,7 @@ configured on the computer you use. _NOTE: if you use docker-machine (deprecated
 1. Retrieve git project
 
     ```bash
-    $ git clone git@github.com:ibrohim238/comics.git
+    $ git clone git@github.com:ibrohim238/apricode.git
     ```
 
 2. Change directory to the `docker-laravel` (`cd docker-laravel`)

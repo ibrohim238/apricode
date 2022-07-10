@@ -1,0 +1,633 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Apricode documentation",
+        "description": "V1 Api docs",
+        "contact": {
+            "email": "ialeroy@mail.ru"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/game": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Список игр",
+                "description": "Список игр",
+                "operationId": "23a5c91cd094905106b2687c39e4ae5d",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GameResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Добавить игру",
+                "description": "Добавить игру",
+                "operationId": "2ae4807231f40493fe16d22d82a1eabb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GameRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    }
+                }
+            }
+        },
+        "/api/v1/game/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Страница игры",
+                "description": "Страница игры",
+                "operationId": "150eb0bc8ce8f88c17f5721c799eb367",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Удаление игры",
+                "description": "Удаление игры",
+                "operationId": "c81468c67014daffd5c29f32d5e2c6e2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Обновление игры",
+                "description": "Обновление игры",
+                "operationId": "d10718ce7225c57b7ae2bb216d90d6a0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GameRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    }
+                }
+            }
+        },
+        "/api/v1/genres": {
+            "get": {
+                "tags": [
+                    "Genres"
+                ],
+                "summary": "Список жанров",
+                "description": "Список жанров",
+                "operationId": "66e9590ab65c5c762d3cc4d85bbebc21",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenreResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Genres"
+                ],
+                "summary": "Добавить жанр",
+                "description": "Добавить жанр",
+                "operationId": "66af595f201b38027951516bac71ed6f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GenreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Genre"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/genres/{id}": {
+            "get": {
+                "tags": [
+                    "Genres"
+                ],
+                "summary": "Страница жанра",
+                "description": "Страница жанра",
+                "operationId": "7cb562b914ccd8e03bcd0ab72affbf8d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Genre"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Genres"
+                ],
+                "summary": "Удаление жанра",
+                "description": "Удаление жанра",
+                "operationId": "08d4bad77bb64e72fc79402fac1889e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Genres"
+                ],
+                "summary": "Обновление жанра",
+                "description": "Обновление жанра",
+                "operationId": "f2e4ff2e4875d7776bb24dbe0cce9895",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GenreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Genre"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Game": {
+                "title": "Game",
+                "description": "Game Model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Имя",
+                        "type": "string",
+                        "example": "Rachelle Homenick"
+                    },
+                    "studio": {
+                        "title": "studio",
+                        "description": "Студия",
+                        "type": "string",
+                        "example": "Logic"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Game"
+                }
+            },
+            "Genre": {
+                "title": "Genre",
+                "description": "Genre Model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Имя",
+                        "type": "string",
+                        "example": "Rachelle Homenick"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Genre"
+                }
+            },
+            "GameRequest": {
+                "title": "Game request",
+                "description": "Game request body data",
+                "required": [
+                    "name",
+                    "studio"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string",
+                        "example": "A nice Game"
+                    },
+                    "studio": {
+                        "title": "studio",
+                        "description": "Название",
+                        "type": "string",
+                        "example": "This is new Game's company"
+                    },
+                    "genres": {
+                        "title": "genres",
+                        "description": "Жанры",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Genre"
+                        },
+                        "example": [
+                            1,
+                            2,
+                            3
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "GenreRequest": {
+                "title": "Genre request",
+                "description": "Genre request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string",
+                        "example": "A nice Genre"
+                    }
+                },
+                "type": "object"
+            },
+            "GameResource": {
+                "title": "GameResource",
+                "description": "Game resource",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/Game"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "GameResource"
+                }
+            },
+            "GenreResource": {
+                "title": "GenreResource",
+                "description": "Genre resource",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/Genre"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "GenreResource"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Games",
+            "description": "Игры"
+        },
+        {
+            "name": "Genres",
+            "description": "Жанры"
+        }
+    ]
+}
