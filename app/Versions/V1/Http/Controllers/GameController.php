@@ -28,13 +28,13 @@ class GameController extends Controller
         parameters: [
             new OA\Parameter(
                 name: 'page',
-                in: 'path',
+                in: 'query',
                 required: false,
                 schema: new OA\Schema(type: 'integer'),
             ),
             new OA\Parameter(
                 name: 'count',
-                in: 'path',
+                in: 'query',
                 required: false,
                 schema: new OA\Schema(type: 'integer'),
             )
