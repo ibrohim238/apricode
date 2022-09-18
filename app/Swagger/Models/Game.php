@@ -44,13 +44,4 @@ class Game
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
-
-    #[OA\Property(
-        title: "Updated at",
-        description: "Обновлена в",
-        type: "string",
-        format: "datetime",
-        example: "2020-01-27 17:50:45",
-    )]
-    private Carbon $updated_at;
 }

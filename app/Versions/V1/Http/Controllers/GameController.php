@@ -43,7 +43,19 @@ class GameController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/GameResource")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    type: 'array',
+                    items: new OA\Items(ref: "#/components/schemas/Game")
+                ),
+                new OA\Property(
+                    property: 'meta',
+                    ref: "#/components/schemas/Pagination"
+                )
+            ]
+        )
     )]
     public function index(Request $request): GameCollection
     {
@@ -71,7 +83,14 @@ class GameController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Game")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: "#/components/schemas/Game"
+                ),
+            ]
+        )
     )]
     #[NotFoundResponse]
     public function show(Game $game): GameResource
@@ -96,7 +115,14 @@ class GameController extends Controller
     #[OA\Response(
         response: 201,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Game")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: "#/components/schemas/Game"
+                ),
+            ]
+        )
     )]
     #[UnprocessableEntityResponse]
     public function store(GameRequest $request): GameResource
@@ -129,7 +155,12 @@ class GameController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Game")
+        content: new OA\JsonContent(properties: [
+            new OA\Property(
+                property: 'data',
+                ref: "#/components/schemas/Game"
+            ),
+        ])
     )]
     #[NotFoundResponse]
     #[UnprocessableEntityResponse]

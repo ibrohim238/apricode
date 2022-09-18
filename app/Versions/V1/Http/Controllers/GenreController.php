@@ -42,7 +42,19 @@ class GenreController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/GenreResource")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    type: 'array',
+                    items: new OA\Items(ref: "#/components/schemas/Genre")
+                ),
+                new OA\Property(
+                    property: 'meta',
+                    ref: "#/components/schemas/Pagination"
+                )
+            ]
+        )
     )]
     public function index(Request $request): GenreCollection
     {
@@ -70,7 +82,14 @@ class GenreController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Genre")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: "#/components/schemas/Genre"
+                ),
+            ]
+        )
     )]
     #[NotFoundResponse]
     public function show(Genre $genre): GenreResource
@@ -95,7 +114,14 @@ class GenreController extends Controller
     #[OA\Response(
         response: 201,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Genre")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: "#/components/schemas/Genre"
+                ),
+            ]
+        )
     )]
     #[UnprocessableEntityResponse]
     public function store(GenreRequest $request): GenreResource
@@ -128,7 +154,14 @@ class GenreController extends Controller
     #[OA\Response(
         response: 200,
         description: 'OK',
-        content: new OA\JsonContent(ref: "#/components/schemas/Genre")
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: "#/components/schemas/Genre"
+                ),
+            ]
+        )
     )]
     #[NotFoundResponse]
     #[UnprocessableEntityResponse]
