@@ -45,7 +45,18 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GameResource"
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Game"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -75,7 +86,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Game"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Game"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -130,7 +146,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Game"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Game"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -205,7 +226,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Game"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Game"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -270,7 +296,18 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GenreResource"
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Genre"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -300,7 +337,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Genre"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Genre"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -352,7 +394,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Genre"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Genre"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -427,7 +474,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Genre"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Genre"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -489,13 +541,6 @@
                         "type": "string",
                         "format": "datetime",
                         "example": "2020-01-27 17:50:45"
-                    },
-                    "updated_at": {
-                        "title": "Updated at",
-                        "description": "Обновлена в",
-                        "type": "string",
-                        "format": "datetime",
-                        "example": "2020-01-27 17:50:45"
                     }
                 },
                 "type": "object",
@@ -526,18 +571,56 @@
                         "type": "string",
                         "format": "datetime",
                         "example": "2020-01-27 17:50:45"
-                    },
-                    "updated_at": {
-                        "title": "Updated at",
-                        "description": "Обновлена в",
-                        "type": "string",
-                        "format": "datetime",
-                        "example": "2020-01-27 17:50:45"
                     }
                 },
                 "type": "object",
                 "xml": {
                     "name": "Genre"
+                }
+            },
+            "Pagination": {
+                "title": "Pagination",
+                "description": "Pagination",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "current_page",
+                        "type": "integer"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "from",
+                        "type": "integer"
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "last_page",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "path",
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "per_page",
+                        "type": "integer"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "to",
+                        "type": "integer"
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "total",
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Pagination"
                 }
             },
             "GameRequest": {
@@ -591,32 +674,6 @@
                     }
                 },
                 "type": "object"
-            },
-            "GameResource": {
-                "title": "GameResource",
-                "description": "Game resource",
-                "properties": {
-                    "data": {
-                        "$ref": "#/components/schemas/Game"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "GameResource"
-                }
-            },
-            "GenreResource": {
-                "title": "GenreResource",
-                "description": "Genre resource",
-                "properties": {
-                    "data": {
-                        "$ref": "#/components/schemas/Genre"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "GenreResource"
-                }
             }
         }
     },
